@@ -1,0 +1,3 @@
+#Place this file in /etc/udev/rules.d
+#It matches on the attribute of KERNEL being "ttyUSB0" and sets the permissions to rw for everyone
+KERNEL=="ttyUSB0", NAME="%k", MODE="0666",OWNER="root",GROUP="root"

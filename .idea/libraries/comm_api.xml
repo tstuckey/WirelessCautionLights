@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="comm_api">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/comm_api/commapi_linux/jar" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+    <jarDirectory url="file://$PROJECT_DIR$/comm_api/commapi_linux/jar" recursive="false" />
+  </library>
+</component>
