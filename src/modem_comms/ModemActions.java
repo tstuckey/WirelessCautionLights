@@ -10,7 +10,6 @@ import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.ResourceBundle;
 import java.util.Vector;
-import java.util.zip.DataFormatException;
 
 import javax.comm.CommPortIdentifier;
 import javax.comm.PortInUseException;
@@ -21,9 +20,7 @@ import javax.swing.JOptionPane;
 import javax.swing.ProgressMonitor;
 import javax.swing.SwingWorker;
 import javax.swing.UIManager;
-import base.Active_LightNodes;
 import base.BackgroundFrame;
-import base.LightNode;
 import base.The_Desktop;
 
 
@@ -101,10 +98,15 @@ public class ModemActions {
 		Vector<String> port_list=new Vector<String>();
 		// get list of ports available on this particular computer,
 		// by calling static method in CommPortIdentifier.
-		Enumeration pList = CommPortIdentifier.getPortIdentifiers();
+		Enumeration pList = null;
+		try{
+            pList = CommPortIdentifier.getPortIdentifiers();
+        }catch (Exception e){
+            System.err.println("No ports available");
+        }
 
 		// Process the list of ports, putting serial ports into ComboBox
-		while (pList.hasMoreElements()) {
+		while ((pList!=null)&&(pList.hasMoreElements())) {
 			CommPortIdentifier cpi = (CommPortIdentifier)pList.nextElement();
 			if (cpi.getPortType() == CommPortIdentifier.PORT_SERIAL) {
 				port_list.add(cpi.getName());
@@ -284,7 +286,7 @@ public class ModemActions {
  * vector which is then returned. 
  * 
  * @param t_pool
- * @param acknowledgement
+ * @param acknowledgment
  * @return vector of the addresses whose return type was passed in as the acknowledgment parameter
  */
 	private Vector<String> determineAddresses(ReceivedMessagedPool t_pool, String acknowledgment){
@@ -862,7 +864,7 @@ public class ModemActions {
 	/**This method is the central control point for discovering a range of values.
 	 * 
 	 * @param parent_frame
-	 * @param track_id
+	 * @param calling_bf
 	 */
 	public void discoverNodes(JInternalFrame parent_frame, BackgroundFrame calling_bf){
 		resetStreams();
