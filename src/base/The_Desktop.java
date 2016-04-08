@@ -7,7 +7,6 @@ import javax.swing.JMenuItem;
 import javax.swing.JMenuBar;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
 
 import modem_comms.MasterCounter;
 import modem_comms.ModemActions;

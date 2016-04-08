@@ -13,7 +13,6 @@ import javax.swing.event.InternalFrameEvent;
 import javax.swing.event.InternalFrameListener;
 import javax.swing.event.MouseInputAdapter;
 
-import base.LightNode.BlinkerJob;
 import utilities.MyKeyAdapter;
 import modem_comms.ModemActions;
 import modem_comms.ReceivedMessagedPool;
